@@ -38,4 +38,7 @@ public class ImageMap extends Map
 	{
 		return super.createByteBuffer();
 	}
+        public ByteBuffer copyToByteBuffer(ByteBuffer buffer) {
+            return super.copyToByteBuffer(buffer);
+        }
 }

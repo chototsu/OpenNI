@@ -21,6 +21,7 @@
 ****************************************************************************/
 package org.OpenNI;
 
+import java.nio.BufferOverflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -56,7 +57,14 @@ public class Map
 		NativeMethods.copyToBuffer(buffer, this.ptr, size);
 		return buffer;
 	}
-
+        protected ByteBuffer copyToByteBuffer(ByteBuffer buffer) {
+            int size = this.xRes * this.yRes * this.bytesPerPixel;
+            if (size > buffer.capacity()) {
+                throw new BufferOverflowException();
+            }
+            NativeMethods.copyToBuffer(buffer, this.ptr, size);
+            return buffer;
+        }
 	protected long getPixelPtr(int x, int y) 
 	{ 
 		return this.ptr + (y * this.xRes + x) * this.bytesPerPixel; 

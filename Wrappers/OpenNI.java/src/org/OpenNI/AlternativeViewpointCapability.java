@@ -48,7 +48,7 @@ public class AlternativeViewpointCapability extends CapabilityBase
 		return NativeMethods.xnIsViewPointSupported(toNative(), other.toNative());
 	}
 	
-	void setViewpoint(ProductionNode other) throws StatusException
+	public void setViewpoint(ProductionNode other) throws StatusException
 	{
 		int status = NativeMethods.xnSetViewPoint(toNative(), other.toNative());
 		WrapperUtils.throwOnError(status);

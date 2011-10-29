@@ -21,6 +21,7 @@
 ****************************************************************************/
 package org.OpenNI;
 
+import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 
 public class ShortMap extends Map 
@@ -45,6 +46,9 @@ public class ShortMap extends Map
 	{
 		return createByteBuffer().asShortBuffer();
 	}
+        public ByteBuffer copyToByteBuffer(ByteBuffer buffer) {
+            return super.copyToByteBuffer(buffer);
+        }
 	
 	private static final int BYTES_PER_PIXEL = Short.SIZE / 8;
 }
